@@ -42,7 +42,7 @@ public class JavaPDGBuilder {
 		// Join the subgraphs into PDGs
 		ProgramDependeceGraph[] pdgArray = new ProgramDependeceGraph[javaFiles.length];
 		for (int i = 0; i < javaFiles.length; ++i) {
-			pdgArray[i] = new ProgramDependeceGraph(javaFiles[i].getName(), 
+			pdgArray[i] = new ProgramDependeceGraph(javaFiles[i],
 					ctrlSubgraphs[i], dataSubgraphs[i]);
 		}
 		

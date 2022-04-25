@@ -1,6 +1,8 @@
 /*** In The Name of Allah ***/
 package ghaffarian.progex.graphs.pdg;
 
+import java.io.File;
+
 /**
  * Program Dependence Graph (PDG).
  * A PDG consists of two main subgraphs:
@@ -19,7 +21,7 @@ public class ProgramDependeceGraph {
 	/**
 	 * Name of the corresponding Java source file.
 	 */
-	public final String FILE_NAME;
+	public final File FILE_NAME;
 	
 	/**
 	 * Control Dependence Subgraph (CDS) of this PDG.
@@ -36,7 +38,7 @@ public class ProgramDependeceGraph {
 	 * based on the given Java file-name, Control Dependence Graph, 
 	 * and Data Dependence Graph.
 	 */
-	public ProgramDependeceGraph(String name, 
+	public ProgramDependeceGraph(File name,
 			ControlDependenceGraph cds, DataDependenceGraph dds) {
 		FILE_NAME = name;
 		CDS = cds;
