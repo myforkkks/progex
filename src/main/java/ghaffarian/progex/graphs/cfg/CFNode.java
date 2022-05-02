@@ -56,6 +56,10 @@ public class CFNode {
 		return properties.get(key.toLowerCase());
 	}
 
+	public Object getPropertyWithDefault(String key) {
+		return properties.getOrDefault(key, false);
+	}
+
 	public Set<String> getAllProperties() {
 		return properties.keySet();
 	}
