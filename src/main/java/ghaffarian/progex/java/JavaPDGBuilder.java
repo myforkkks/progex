@@ -30,10 +30,9 @@ public class JavaPDGBuilder {
 	}
 	
 	/**
-	 * Builds and returns Program Dependence Graphs (PDG) for each given Java file.
+	 * Builds and returns Program Dependence Graphs (PDG) for given Java files.
 	 */
-	public static ProgramDependeceGraph[] buildForAll(File[] javaFiles) throws IOException {
-		
+	public static ProgramDependeceGraph[] buildForAll(File[] javaFiles) {
 		ControlDependenceGraph[] ctrlSubgraphs;
 		ctrlSubgraphs = new ControlDependenceGraph[javaFiles.length];
 		for (int i = 0; i < javaFiles.length; ++i)
@@ -43,20 +42,13 @@ public class JavaPDGBuilder {
 				ctrlSubgraphs[i] = null;
 			}
         //
-		DataDependenceGraph[] dataSubgraphs;
-			dataSubgraphs = new DataDependenceGraph[javaFiles.length];
-//		dataSubgraphs = JavaDDGBuilder.buildForAll(javaFiles);
-		for (int i=0; i< javaFiles.length; i++) {
-			try {
-				File[] files = new File[1];
-				files[0] = javaFiles[i];
-				dataSubgraphs[i] = JavaDDGBuilder.buildForAll(files)[0];
-			}
-			catch (Exception e) {
-				dataSubgraphs[i] = null;
-			}
+		DataDependenceGraph[] dataSubgraphs = new DataDependenceGraph[0];
+		try {
+			dataSubgraphs = JavaDDGBuilder.buildForAll(javaFiles);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-        //
+
 		// Join the subgraphs into PDGs
 		List<ProgramDependeceGraph> pdgList = new ArrayList<>();
 		for (int i = 0; i < javaFiles.length; ++i) {
