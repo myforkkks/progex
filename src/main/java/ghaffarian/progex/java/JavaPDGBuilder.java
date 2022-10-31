@@ -50,14 +50,11 @@ public class JavaPDGBuilder {
 		}
 
 		// Join the subgraphs into PDGs
-		List<ProgramDependeceGraph> pdgList = new ArrayList<>();
-		for (int i = 0; i < javaFiles.length; ++i) {
-			if (ctrlSubgraphs[i] != null && dataSubgraphs[i] != null) {
-				pdgList.add(new ProgramDependeceGraph(javaFiles[i],
-						ctrlSubgraphs[i], dataSubgraphs[i]));
-			}
+		ProgramDependeceGraph[] pdgArray = new ProgramDependeceGraph[javaFiles.length];
+		for (int i=0; i< javaFiles.length; i++) {
+			pdgArray[i] = new ProgramDependeceGraph(javaFiles[i], ctrlSubgraphs[i], dataSubgraphs[i]);
 		}
-		return pdgList.toArray(new ProgramDependeceGraph[0]);
+		return pdgArray;
 	}
 
 }
